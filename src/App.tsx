@@ -4,6 +4,7 @@ import "./App.css";
 import { Grid, GridItem, Show } from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
 import ColorModeSwitch from "./components/ColorModeSwitch";
+import GameGrid from "./components/GameGrid";
 
 function App() {
   return (
@@ -22,7 +23,7 @@ function App() {
         </GridItem>
       </Show>
       <GridItem area="main" bg="red">
-        Main
+        <GameGrid />
       </GridItem>
     </Grid>
   );
