@@ -10,7 +10,7 @@ interface FetchResponse<T> {
 
 const useData = <T>(endpoint :string) => {
   const [data, setData] = useState<T[]>([]);
-  const [errors, setErrors] = useState("");
+  const [error, setError] = useState("");
   const[isLoading, setLoading]=useState(false);
 
   useEffect(() => {
@@ -21,13 +21,13 @@ const useData = <T>(endpoint :string) => {
       .then((res) => {setData(res.data.results); setLoading(false) })
       .catch((err) => {
         if(err instanceof CanceledError) return;
-        setErrors(err.message);
+        setError(err.message);
         setLoading(false);
       });
 
       return () => controller.abort();
   },[]);
-  return { data, errors, isLoading };
+  return { data, error, isLoading };
 };
 
 export default useData;
