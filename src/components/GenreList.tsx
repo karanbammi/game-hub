@@ -13,12 +13,23 @@ import imageUrlGenerator from "../services/image-url";
 
 interface Props {
   onSelectGenre: (genre: Genre) => void;
+  selectedGenre: Genre | null;
 }
 
-const GenreList = ({ onSelectGenre }: Props) => {
+const GenreList = ({ selectedGenre, onSelectGenre }: Props) => {
   const { data, isLoading, error } = useGenres();
   if (error) return null;
-  if (isLoading) return <Spinner />;
+  if (isLoading)
+    return (
+      <Spinner
+        style={{
+          position: "fixed",
+          top: "50%",
+          left: "5%",
+          transform: "translate(-50%, -50%)",
+        }}
+      />
+    );
 
   return (
     <List paddingTop="15px">
@@ -31,6 +42,9 @@ const GenreList = ({ onSelectGenre }: Props) => {
               boxSize="32px"
             />
             <Button
+              color={
+                genre.id === selectedGenre?.id ? "rgb(0, 255, 186)" : "white"
+              }
               onClick={() => onSelectGenre(genre)}
               variant="link"
               fontSize="14px"
