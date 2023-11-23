@@ -7,10 +7,14 @@ import ColorModeSwitch from "./components/ColorModeSwitch";
 import GameGrid from "./components/GameGrid";
 import GenreList from "./components/GenreList";
 import { Genre } from "./hooks/useGenres";
+import PlatformList from "./components/PlatformList";
+import { Platform } from "./hooks/useGames";
 
 function App() {
   const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
-
+  const [selectedPlatform, setSelectedPlatform] = useState<Platform | null>(
+    null
+  );
   return (
     <Grid
       justifyContent="center"
@@ -36,7 +40,14 @@ function App() {
         </GridItem>
       </Show>
       <GridItem area="main">
-        <GameGrid selectedGenre={selectedGenre} />
+        <PlatformList
+          selectedPlatform={selectedPlatform}
+          onSelectPlatform={(platform) => setSelectedPlatform(platform)}
+        />
+        <GameGrid
+          selectedPlatform={selectedPlatform}
+          selectedGenre={selectedGenre}
+        />
       </GridItem>
     </Grid>
   );
