@@ -32,7 +32,7 @@ const GenreList = ({ selectedGenre, onSelectGenre }: Props) => {
     );
 
   return (
-    <List paddingTop="15px">
+    <List paddingRight={"10px"}>
       {data.map((genre) => (
         <ListItem key={genre.id} paddingY="5px" paddingX="10px">
           <HStack>
