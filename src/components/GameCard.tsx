@@ -22,6 +22,9 @@ const GameCard = ({ game }: props) => {
           />
           <CriticScore score={game.metacritic}></CriticScore>
         </HStack>
+        <Text opacity="50%">
+          Release Date: {game.released.split("-").reverse().join("-")}
+        </Text>
       </CardBody>
     </Card>
   );
