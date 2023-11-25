@@ -1,8 +1,8 @@
-import React from "react";
 import useGenres, { Genre } from "../hooks/useGenres";
 import {
   Button,
   HStack,
+  Heading,
   Image,
   List,
   ListItem,
@@ -32,27 +32,33 @@ const GenreList = ({ selectedGenre, onSelectGenre }: Props) => {
     );
 
   return (
-    <List paddingRight={"10px"}>
-      {data.map((genre) => (
-        <ListItem key={genre.id} paddingY="5px" paddingX="10px">
-          <HStack>
-            <Image
-              borderRadius="8"
-              src={imageUrlGenerator(genre.image_background)}
-              boxSize="32px"
-            />
-            <Button
-              color={genre.id === selectedGenre?.id ? "rgb(0, 255, 186)" : ""}
-              onClick={() => onSelectGenre(genre)}
-              variant="link"
-              fontSize="14px"
-            >
-              {genre.name}
-            </Button>
-          </HStack>
-        </ListItem>
-      ))}
-    </List>
+    <>
+      <Heading marginY="20px">Genres</Heading>
+      <List paddingRight={"10px"}>
+        {data.map((genre) => (
+          <ListItem key={genre.id} paddingY="5px" paddingX="10px">
+            <HStack>
+              <Image
+                borderRadius="8"
+                src={imageUrlGenerator(genre.image_background)}
+                objectFit="cover"
+                boxSize="32px"
+              />
+              <Button
+                whiteSpace="normal"
+                textAlign="left"
+                color={genre.id === selectedGenre?.id ? "rgb(0, 255, 186)" : ""}
+                onClick={() => onSelectGenre(genre)}
+                variant="link"
+                fontSize="14px"
+              >
+                {genre.name}
+              </Button>
+            </HStack>
+          </ListItem>
+        ))}
+      </List>
+    </>
   );
 };
 

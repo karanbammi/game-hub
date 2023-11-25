@@ -1,6 +1,3 @@
-import { Button, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
-import React from "react";
-import { BsChevronDown } from "react-icons/bs";
 import { Dropdown } from "rsuite";
 interface Props {
   selectedOrder: string;
