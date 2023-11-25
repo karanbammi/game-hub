@@ -1,6 +1,7 @@
 import { Button, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
 import React from "react";
 import { BsChevronDown } from "react-icons/bs";
+import { Dropdown } from "rsuite";
 interface Props {
   selectedOrder: string;
   onSelectedOrder: (order: string) => void;
@@ -19,22 +20,17 @@ const GameSorter = ({ selectedOrder, onSelectedOrder }: Props) => {
   );
 
   return (
-    <Menu>
-      <MenuButton as={Button} rightIcon={<BsChevronDown />}>
-        Order BY: {currentOrder?.label || "Relevance"}
-      </MenuButton>
-      <MenuList>
-        {sortOrders.map((order) => (
-          <MenuItem
-            onClick={() => onSelectedOrder(order.value)}
-            key={order.value}
-            value={order.value}
-          >
-            {order.label}
-          </MenuItem>
-        ))}
-      </MenuList>
-    </Menu>
+    <Dropdown title={"Order BY: " + (currentOrder?.label || "Relevance")}>
+      {sortOrders.map((order) => (
+        <Dropdown.Item
+          onClick={() => onSelectedOrder(order.value)}
+          key={order.value}
+          value={order.value}
+        >
+          {order.label}
+        </Dropdown.Item>
+      ))}
+    </Dropdown>
   );
 };
 
