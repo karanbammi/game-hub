@@ -7,9 +7,8 @@ import NavBar from "./components/NavBar";
 import GameGrid from "./components/GameGrid";
 import GenreList from "./components/GenreList";
 import { Genre } from "./hooks/useGenres";
-import PlatformList from "./components/PlatformList";
+import PlatformList, { ParentPlatform } from "./components/PlatformList";
 import GameSorter from "./components/GameSorter";
-import { ParentPlatform } from "./hooks/usePlatforms";
 import GameHeading from "./components/GameHeading";
 
 export interface GameQuery {
@@ -21,6 +20,7 @@ export interface GameQuery {
 
 function App() {
   const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
+
   return (
     <Grid
       justifyContent="center"
