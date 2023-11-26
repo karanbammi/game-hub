@@ -18,6 +18,7 @@ const SearchInput = ({ onSearch }: Props) => {
       <InputGroup paddingRight={{ md: "200px" }}>
         <InputLeftElement children={<BsSearch />} />
         <Input
+          focusBorderColor="#008080"
           ref={ref}
           borderRadius={"20px"}
           placeholder="Search games"
