@@ -11,17 +11,23 @@ const GameCard = ({ game }: props) => {
   return (
     <Card overflow={"hidden"} borderRadius={"10px"}>
       <Image src={imageUrlGenerator(game.background_image)} />
-      <CardBody>
-        <Heading fontSize={"1xl"} textAlign={"left"}>
-          {game.name}
-        </Heading>
+      <CardBody paddingY={"10px"} paddingX={"15px"}>
         <HStack justifyContent={"space-between"}>
           <PlatformIconList
             platform={game.parent_platforms.map((p) => p.platform)}
           />
           <CriticScore score={game.metacritic}></CriticScore>
         </HStack>
-        <Text opacity="50%">
+        <Heading
+          paddingBottom="2px"
+          paddingTop={"5px"}
+          fontSize={"2xl"}
+          textAlign={"left"}
+        >
+          {game.name}
+        </Heading>
+
+        <Text fontSize="12px" opacity="50%">
           Release Date:{" "}
           {game.released
             ? game.released.split("-").reverse().join("-")
