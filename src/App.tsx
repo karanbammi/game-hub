@@ -23,7 +23,6 @@ const initialState = {} as GameQuery;
 
 function App() {
   const [gameQuery, setGameQuery] = useState<GameQuery>(initialState);
-  console.log(gameQuery);
 
   return (
     <Grid
