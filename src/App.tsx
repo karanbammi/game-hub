@@ -19,8 +19,11 @@ export interface GameQuery {
   searchText: string;
 }
 
+const initialState = {} as GameQuery;
+
 function App() {
-  const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
+  const [gameQuery, setGameQuery] = useState<GameQuery>(initialState);
+  console.log(gameQuery);
 
   return (
     <Grid
@@ -36,7 +39,7 @@ function App() {
       }}
     >
       <GridItem area="nav">
-        <NavBar></NavBar>
+        <NavBar onClick={() => setGameQuery(initialState)}></NavBar>
       </GridItem>
       <Show above="lg">
         <GridItem area="aside">

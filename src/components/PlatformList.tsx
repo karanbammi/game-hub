@@ -29,7 +29,10 @@ const PlatformList = ({ onSelectPlatform, selectedPlatform }: Props) => {
   return (
     <CustomProvider theme={colorMode}>
       <ButtonToolbar>
-        <Dropdown title={selectedPlatform?.name || "Platforms"}>
+        <Dropdown title={selectedPlatform?.name || "All Platforms"}>
+          <Dropdown.Item onClick={() => onSelectPlatform({} as ParentPlatform)}>
+            All Platforms
+          </Dropdown.Item>
           <Dropdown.Item onClick={() => onSelectPlatform(pcplatforms)}>
             PC
           </Dropdown.Item>
