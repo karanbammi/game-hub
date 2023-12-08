@@ -1,9 +1,10 @@
 import { Dropdown } from "rsuite";
-interface Props {
-  selectedOrder: string;
-  onSelectedOrder: (order: string) => void;
-}
-const GameSorter = ({ selectedOrder, onSelectedOrder }: Props) => {
+import useGameQueryStore from "../store";
+
+const GameSorter = () => {
+  const selectedOrder = useGameQueryStore((s) => s.gameQuery.order);
+  const setOrder = useGameQueryStore((s) => s.setOrder);
+
   const sortOrders = [
     { value: "", label: "Relevance" },
     { value: "name", label: "Name" },
@@ -20,7 +21,7 @@ const GameSorter = ({ selectedOrder, onSelectedOrder }: Props) => {
     <Dropdown title={"Order BY: " + (currentOrder?.label || "Relevance")}>
       {sortOrders.map((order) => (
         <Dropdown.Item
-          onClick={() => onSelectedOrder(order.value)}
+          onClick={() => setOrder(order.value)}
           key={order.value}
           value={order.value}
         >

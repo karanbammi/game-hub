@@ -1,29 +1,15 @@
-import { useState } from "react";
-
-import "./App.css";
 import { Box, Grid, GridItem, HStack, Show } from "@chakra-ui/react";
+import "./App.css";
 import NavBar from "./components/NavBar";
 
 import GameGrid from "./components/GameGrid";
-import GenreList from "./components/GenreList";
-import { Genre } from "./hooks/useGenres";
-import PlatformList, { ParentPlatform } from "./components/PlatformList";
-import GameSorter from "./components/GameSorter";
 import GameHeading from "./components/GameHeading";
+import GameSorter from "./components/GameSorter";
+import GenreList from "./components/GenreList";
+import PlatformList from "./components/PlatformList";
 import SearchInput from "./components/SearchInput";
 
-export interface GameQuery {
-  genre: Genre | null;
-  platform: ParentPlatform | null;
-  order: string;
-  searchText: string;
-}
-
-const initialState = {} as GameQuery;
-
 function App() {
-  const [gameQuery, setGameQuery] = useState<GameQuery>(initialState);
-
   return (
     <Grid
       justifyContent="center"
@@ -38,38 +24,23 @@ function App() {
       }}
     >
       <GridItem area="nav">
-        <NavBar onClick={() => setGameQuery(initialState)}></NavBar>
+        <NavBar></NavBar>
       </GridItem>
       <Show above="lg">
         <GridItem area="aside">
-          <GenreList
-            selectedGenre={gameQuery.genre}
-            onSelectGenre={(genre) => setGameQuery({ ...gameQuery, genre })}
-          />
+          <GenreList />
         </GridItem>
       </Show>
       <GridItem area="main">
         <Box marginX="10px">
-          <SearchInput
-            onSearch={(searchText) =>
-              setGameQuery({ ...gameQuery, searchText })
-            }
-          />
-          <GameHeading gameQuery={gameQuery} />
+          <SearchInput />
+          <GameHeading />
           <HStack>
-            <PlatformList
-              selectedPlatform={gameQuery.platform}
-              onSelectPlatform={(platform) =>
-                setGameQuery({ ...gameQuery, platform })
-              }
-            />
-            <GameSorter
-              onSelectedOrder={(order) => setGameQuery({ ...gameQuery, order })}
-              selectedOrder={gameQuery.order}
-            />
+            <PlatformList />
+            <GameSorter />
           </HStack>
         </Box>
-        <GameGrid gameQuery={gameQuery} />
+        <GameGrid />
       </GridItem>
     </Grid>
   );

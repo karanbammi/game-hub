@@ -1,32 +1,16 @@
-import {
-  Box,
-  Button,
-  ButtonGroup,
-  Link,
-  SimpleGrid,
-  Text,
-} from "@chakra-ui/react";
+import { Box, SimpleGrid, Text } from "@chakra-ui/react";
 
+import { useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import useGames from "../hooks/useGames";
 import GameCard from "./GameCard";
 import GameCardSkeleton from "./GameCardSkeleton";
-import { GameQuery } from "../App";
-import React, { useState } from "react";
 import Pagination from "./Pagination";
 
-interface Props {
-  gameQuery: GameQuery;
-}
-
-const GameGrid = ({ gameQuery }: Props) => {
+const GameGrid = () => {
   const page_Size = 20;
   const [page, setpage] = useState(1);
-  const { data, error, isLoading, isRefetching } = useGames(
-    gameQuery,
-    page,
-    page_Size
-  );
+  const { data, error, isLoading, isRefetching } = useGames(page, page_Size);
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
   const page_limit = Math.floor(
     data?.count
