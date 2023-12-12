@@ -2,6 +2,8 @@ import { useQuery } from "@tanstack/react-query";
 
 import APIClient, { FetchResponse } from "../services/api-client";
 import useGameQueryStore from "../store";
+import { Publisher } from "./usePublisher";
+import { Genre } from "./useGenres";
 
 
 export interface Platform{
@@ -18,7 +20,9 @@ export interface Game {
   parent_platforms: {platform:Platform}[];
   metacritic: number;
   released: string;
-  description_raw: string;
+  description: string;
+  publishers: Publisher[];
+  genres: Genre[]
 
 }
 
@@ -37,7 +41,8 @@ return useQuery<FetchResponse<Game>, Error>({
       page: (page),
       page_size: page_size,
     }}),
-    keepPreviousData: true
+    keepPreviousData: true,
+    staleTime: 24*60*60*1000
 })
 }
 export default useGames;
