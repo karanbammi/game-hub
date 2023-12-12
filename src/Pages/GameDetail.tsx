@@ -1,7 +1,14 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import useGame from "../hooks/useGame";
-import { GridItem, Heading, SimpleGrid, Spinner, Text } from "@chakra-ui/react";
+import {
+  Box,
+  GridItem,
+  Heading,
+  SimpleGrid,
+  Spinner,
+  Text,
+} from "@chakra-ui/react";
 import GameAttributes from "../components/GameAttributes";
 
 import parse from "html-react-parser";
@@ -16,7 +23,7 @@ const GameDetail = () => {
   if (error || !game) throw error;
   const descript = parse(game.description);
   return (
-    <>
+    <Box padding={"15px"}>
       <Heading paddingBottom={7}>{game.name}</Heading>
       <SimpleGrid columns={{ base: 1, md: 2 }} spacing={5}>
         <GridItem>
@@ -28,7 +35,7 @@ const GameDetail = () => {
           <GameScreenshots game_Id={game.id} />
         </GridItem>
       </SimpleGrid>
-    </>
+    </Box>
   );
 };
 
