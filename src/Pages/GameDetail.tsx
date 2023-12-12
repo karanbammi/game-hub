@@ -5,9 +5,8 @@ import { Heading, Spinner, Text } from "@chakra-ui/react";
 import GameAttributes from "../components/GameAttributes";
 
 import parse from "html-react-parser";
-
-const html = "<div>Hello World</div>";
-const reactElement = parse(html);
+import GameTrailer from "../components/GameTrailer";
+import GameScreenshots from "../components/GameScreenshots";
 
 const GameDetail = () => {
   const { slug } = useParams();
@@ -19,8 +18,10 @@ const GameDetail = () => {
   return (
     <>
       <Heading>{game.name}</Heading>
-      <Text>{descript}</Text>
+      <div>{descript}</div>
       <GameAttributes game={game} />
+      <GameTrailer gameId={game.id} />
+      <GameScreenshots game_Id={game.id} />
     </>
   );
 };
