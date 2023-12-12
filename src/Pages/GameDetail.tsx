@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import useGame from "../hooks/useGame";
-import { Heading, Spinner, Text } from "@chakra-ui/react";
+import { GridItem, Heading, SimpleGrid, Spinner, Text } from "@chakra-ui/react";
 import GameAttributes from "../components/GameAttributes";
 
 import parse from "html-react-parser";
@@ -17,11 +17,17 @@ const GameDetail = () => {
   const descript = parse(game.description);
   return (
     <>
-      <Heading>{game.name}</Heading>
-      <div>{descript}</div>
-      <GameAttributes game={game} />
-      <GameTrailer gameId={game.id} />
-      <GameScreenshots game_Id={game.id} />
+      <Heading paddingBottom={7}>{game.name}</Heading>
+      <SimpleGrid columns={{ base: 1, md: 2 }} spacing={5}>
+        <GridItem>
+          <div>{descript}</div>
+          <GameAttributes game={game} />
+        </GridItem>
+        <GridItem>
+          <GameTrailer gameId={game.id} />
+          <GameScreenshots game_Id={game.id} />
+        </GridItem>
+      </SimpleGrid>
     </>
   );
 };
