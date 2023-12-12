@@ -1,4 +1,3 @@
-import { Game } from "../hooks/useGames";
 import {
   Box,
   Card,
@@ -12,6 +11,7 @@ import PlatformIconList from "./PlatformIconList";
 import CriticScore from "./CriticScore";
 import imageUrlGenerator from "../services/image-url";
 import { Link } from "react-router-dom";
+import { Game } from "../entities/Game";
 
 interface props {
   game: Game;
